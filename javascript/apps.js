@@ -1,4 +1,16 @@
-// MTA API KEY: 3d3c75a8e083ee09c81331d07c069494
+var config = {
+    apiKey: "AIzaSyCR_IW-DBhW_na7WWSI12WFhQ7pRLr7A78",
+    authDomain: "class-1112018.firebaseapp.com",
+    databaseURL: "https://class-1112018.firebaseio.com",
+    projectId: "class-1112018",
+    storageBucket: "class-1112018.appspot.com",
+    messagingSenderId: "183918733886"
+  };
+  firebase.initializeApp(config);
+  //this is where you can see all the firebase app
+
+//Variable/s
+    var database = firebase.database(); 
 
 //pseudocode:
 /* When adding trains, administrators should be able to submit the following:
