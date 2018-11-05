@@ -1,3 +1,5 @@
+$(document).ready(function () {
+
 var config = {
     apiKey: "AIzaSyCR_IW-DBhW_na7WWSI12WFhQ7pRLr7A78",
     authDomain: "class-1112018.firebaseapp.com",
@@ -11,6 +13,16 @@ var config = {
 
 //Variable/s
     var database = firebase.database(); 
+
+//Variables
+var database = firebase.database();
+var freq = parseInt(freq);
+//Current time
+var currentTime = moment();
+console.log("Local Time: " + moment().format('HH:mm'));
+$('#currentTime').text(currentTime);
+});
+
 
 //pseudocode:
 /* When adding trains, administrators should be able to submit the following:
