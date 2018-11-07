@@ -14,19 +14,50 @@ $(document).ready(function () {
   firebase.initializeApp(config);
   //this is where you can see all the firebase app
 
-//Variable/s
-    var database = firebase.database(); 
+// //Variable/s
+//     var database = firebase.database(); 
+
+// //Variables
+// var database = firebase.database();
+// var freq = parseInt(freq);
+// //Current time
+// var currentTime = moment();
+// console.log("Local Time: " + moment().format('HH:mm'));
+// $('#currentTime').text(currentTime);
+// });
+
+
 
 //Variables
 var database = firebase.database();
 var freq = parseInt(freq);
-//Current time
+//Current time | writes to Jumbotron
+//Current Time
 var currentTime = moment();
 console.log("Local Time: " + moment().format('HH:mm'));
+console.log("Local time: " + moment().format("HH:mm"));
+//Writes Current Time to Jumbotron
+$("#currentTime").text(currentTime);
+//Button click capture
+$("#submit").on("click", function () {
+    //Assign values to the Id"s in the HTML
+   var train = $("#enterTrain").val().trim();
+   var dest = $("#enterDest").val().trim();
+   var firstTrain = $("#enterTime").val().trim();
+   var frequency = $("#enterFrequency").val().trim();
+    //Parse frequency "string" into an integer
+   var frequency = parseInt(frequency);
 $('#currentTime').text(currentTime);
+   //Push new train data to Firebase
+   database.ref().push({
 });
-
-
+       train: train,
+       dest: dest,
+       firstTrain: firstTrain,
+       frequency: frequency,
+       timeAdded: firebase.database.ServerValue.TIMESTAMP
+   });
+}); 
 
 
 

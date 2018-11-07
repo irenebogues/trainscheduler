@@ -26,15 +26,34 @@
                     <div class="jumbotron text-center" style="background-color: none; color: none">
                 <h1>Train Arrivals</h1>
                 <hr>
-                <h3>The Current local time is: </h3>
-                      <div class="row">
-                        <div class="col-sm-8"></div>
-                         <div class="col-sm-3"></div>
+                <h3>The Current </h3>
+                      <!-- Display local time -->
+                     <span id="currentTime"></span>
+                        <div class="row"></div>
+                        <div class="col-sm-9">
+                            <!-- Panel-Primary needed to get white text in Bootstrap -->
+                            <div class="panel panel-primary">
+                                         @@ 00,00,00 @@ <h2>Local Time:
+                                        <th>Arrives In (min)</th>
+                                      </tr>
+                                    </thead>
+                         </div>
                       </div>
                     </div>
                   </div>
-                
-
+            <!-- Input data will be written to the trainTable below -->
+                                <tbody id="trainTable">
+                                    <tr></tr>
+                                </tbody>
+                                <!-- Closes tbody <div> -->
+                                </table>
+                            </div>
+                            <!-- Closes panel-body <div> -->
+                            </div>
+                            <!-- Closes panel panel-primary <div> -->
+                        </div>
+                        <!-- Closes Col-sm-9 <div> -->
+                        </div>
 
                   <div class="row">
                     <!-- Timetable -->
@@ -49,14 +68,33 @@
                         
                      </div>
                      <!-- Sidebar -->
+                     <!--  Begin Sidebar -->
                     <div class="col-sm-3">
-                      <!-- Panel-Primary needed to get white text in Bootstrap -->
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">Panel Heading</div>
+                            <!-- Panel-Primary needed to get white text in Bootstrap -->
+                            <div class="panel panel-primary">
+                            <div class="panel-heading">Add a New Train</div>
                             <div class="panel-body">
-                              Panel content
-                            </div>
-                          </div>
+                                <!-- Form -->
+                                <form role="form" class='form-horizontal'>
+                    
+                                <div class="form-group">
+                                    <label for="train">Train </label>
+                                    <input type="text" class="form-control" id="enterTrain" placeholder="Train from London">
+                                </div>
+                    
+                                <div class="form-group">
+                                        <label class="firstTrain" for="firstTrain">First Train Time</label>
+                                        <label class="militaryTime">&nbsp;(HH:mm | Military Time)</label>
+                                        <input type="" class="form-control" id="enterTime" placeholder="24:59">
+                                      </div>
+                                      <div class="form-group">
+                                            <label for="minutesAway">Frequency - (mins) </label>
+                                            <input type="text" class="form-control" id="enterFrequency" placeholder="120">
+                                          </div>
+                            
+                                      <button type="submit" class="btn btn-default" id="submit">Add Train</button>
+                                      <button type="submit" class="btn btn-default" id="remove">Remove Train</button>
+                                      <hr>
                        
                      </div>
                   </div>
