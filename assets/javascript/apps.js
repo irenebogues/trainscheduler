@@ -3,40 +3,28 @@ $(document).ready(function () {
 
 
   // Initialize Firebase
+  
+  // Initialize Firebase
   var config = {
     apiKey: "AIzaSyAuGsGYpV8lYMY0Dbc8RxvVX4xw6dxOfN8",
     authDomain: "train-scheduler-71f25.firebaseapp.com",
     databaseURL: "https://train-scheduler-71f25.firebaseio.com",
     projectId: "train-scheduler-71f25",
-    storageBucket: "",
+    storageBucket: "train-scheduler-71f25.appspot.com",
     messagingSenderId: "563548609509"
   };
   firebase.initializeApp(config);
-  //this is where you can see all the firebase app
-
-// //Variable/s
-//     var database = firebase.database(); 
-
-// //Variables
-// var database = firebase.database();
-// var freq = parseInt(freq);
-// //Current time
-// var currentTime = moment();
-// console.log("Local Time: " + moment().format('HH:mm'));
-// $('#currentTime').text(currentTime);
-// });
-
-
 
 //Variables
 var database = firebase.database();
-var freq = parseInt(freq);
+// var freq = parseInt(freq);
 //Current time | writes to Jumbotron
 //Current Time
 var currentTime = moment();
-console.log("Local Time: " + moment().format('HH:mm'));
+// console.log("Local Time: " + moment().format('HH:mm'));
 console.log("Local time: " + moment().format("HH:mm"));
-//Writes Current Time to Jumbotron
+
+Writes Current Time to Jumbotron
 $("#currentTime").text(currentTime);
 //Button click capture
 $("#submit").on("click", function () {

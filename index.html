@@ -15,8 +15,13 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Pacifico" rel="stylesheet">
     <!-- Links to Optional JavaScript JQuery CDN -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>   
+    
+    <!-- Firebase Link -->
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
     <title>Train Scheduler</title>
 </head>
 <body>
@@ -26,48 +31,41 @@
                     <div class="jumbotron text-center" style="background-color: none; color: none">
                 <h1>Train Arrivals</h1>
                 <hr>
-                <h3>The Current </h3>
-                      <!-- Display local time -->
-                     <span id="currentTime"></span>
-                        <div class="row"></div>
+                <h3>The Current 
+                <!-- Display local time --> 
+                    <span id="currentTime"></span>
+                </h3>
+                    </div>
+                        <div class="row">
                         <div class="col-sm-9">
                             <!-- Panel-Primary needed to get white text in Bootstrap -->
                             <div class="panel panel-primary">
-                                         @@ 00,00,00 @@ <h2>Local Time:
-                                        <th>Arrives In (min)</th>
+                                <div class="panel-heading">All trains Scheduled Arrival
+                                    <div class="panel-body">
+                                        <div class="panel-body">
+                                            <table class="table table-hover table-responsive" id="timeTable">
+                                                <thead>
+                                                    <tr>
+                                                    <th>Train</th>
+                                                    <th>Destination</th>
+                                                    <th>Frequency</th>
+                                                    <th>Next Arrival</th>
+                                                    <th>Arrives In (min)</th>
                                       </tr>
                                     </thead>
+                                        <!-- Input data will be written to the trainTable below -->
+                                         <tbody id="trainTable">
+                                        <tr></tr>
+                                    </tbody>
+                                </table>
                          </div>
                       </div>
                     </div>
                   </div>
-            <!-- Input data will be written to the trainTable below -->
-                                <tbody id="trainTable">
-                                    <tr></tr>
-                                </tbody>
-                                <!-- Closes tbody <div> -->
-                                </table>
-                            </div>
-                            <!-- Closes panel-body <div> -->
-                            </div>
-                            <!-- Closes panel panel-primary <div> -->
-                        </div>
-                        <!-- Closes Col-sm-9 <div> -->
-                        </div>
-
-                  <div class="row">
-                    <!-- Timetable -->
-                    <div class="col-sm-9">
-                      <!-- Panel-Primary needed to get white text in Bootstrap -->
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">Panel heading without title</div>
-                            <div class="panel-body">
-                              Panel content
-                            </div>
-                          </div>
-                        
-                     </div>
-                     <!-- Sidebar -->
+                
+            
+                                
+                  
                      <!--  Begin Sidebar -->
                     <div class="col-sm-3">
                             <!-- Panel-Primary needed to get white text in Bootstrap -->
@@ -100,13 +98,13 @@
                   </div>
                  </div>
               
-            
-
-            <!-- Firebase Link -->
-            <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
-
+                </div>
+            </div>
+              
+        </div>
+           
             
 \            <!-- Own JavaScript -->
-            <script src="./assets/javascript/app.js"></script>
+            <script type="javascript/text" src="./assets/javascript/app.js"></script>
 </body>
 </html>
