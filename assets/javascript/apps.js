@@ -1,11 +1,7 @@
 $(document).ready(function () {
 
-
-
   // Initialize Firebase
-  
-  // Initialize Firebase
-  var config = {
+    var config = {
     apiKey: "AIzaSyAuGsGYpV8lYMY0Dbc8RxvVX4xw6dxOfN8",
     authDomain: "train-scheduler-71f25.firebaseapp.com",
     databaseURL: "https://train-scheduler-71f25.firebaseio.com",
@@ -24,18 +20,16 @@ var currentTime = moment();
 // console.log("Local Time: " + moment().format('HH:mm'));
 console.log("Local time: " + moment().format("HH:mm"));
 
-Writes Current Time to Jumbotron
-$("#currentTime").text(currentTime);
+//Writes Current Time to Jumbotron
+$('#currentTime').text(currentTime);
 //Button click capture
 $("#submit").on("click", function () {
     //Assign values to the Id"s in the HTML
-   var train = $("#enterTrain").val().trim();
-   var dest = $("#enterDest").val().trim();
-   var firstTrain = $("#enterTime").val().trim();
-   var frequency = $("#enterFrequency").val().trim();
+   var train = $('#enterTrain').val().trim();
+   var dest = $('#enterDest').val().trim();
+   var firstTrain = $('#enterTime').val().trim();
+   var frequency = $('#enterFrequency').val().trim();
     //Parse frequency "string" into an integer
-   var frequency = parseInt(frequency);
-$('#currentTime').text(currentTime);
    //Push new train data to Firebase
    database.ref().push({
 });
@@ -46,10 +40,21 @@ $('#currentTime').text(currentTime);
        timeAdded: firebase.database.ServerValue.TIMESTAMP
    });
 }); 
+database.ref().on("child_added", function (childSnapshot) {}
+var train = childSnapshot.val().train;
+var dest = childSnapshot.val().dest;
+var firstTrain = childSnapshot.val().firstTrain;
+var frequency = childSnapshot.val().frequency
 
+console.log("Train: " + train);
+console.log("Destination: " + dest);
+console.log("Next Train: " + firstTrain);
+console.log("Frequency: " + frequency);
 
+var frequency = parseInt(frequency);
+var currentTime = moment();
+console.log("Current Time: " + moment().format( 'HH:mm'));
 
- 
 
 //pseudocode:
 /* When adding trains, administrators should be able to submit the following:
