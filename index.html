@@ -13,98 +13,81 @@
     <!-- Own CSS -->
     <link rel="stylesheet" href="./assets/css/style.css">
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Pacifico" rel="stylesheet">
-    <!-- Links to Optional JavaScript JQuery CDN -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">    <!-- Firebase Link -->
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
+    <!-- JQuery -->
     <script
     src="https://code.jquery.com/jquery-3.3.1.js"
     integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
     crossorigin="anonymous"></script>   
-    
-    <!-- Firebase Link -->
-    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
+   <!-- Moment.js -->
+   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <title>Train Scheduler</title>
 </head>
 <body>
-        
                 <!-- Search your Destination  -->
                 <div class="container">
-                    <div class="jumbotron text-center" style="background-color: none; color: none">
-                <h1>Train Arrivals</h1>
-                <hr>
-                <h3>The Current Time is: 
-                <!-- Display local time --> 
-                    <span id="currentTime"></span>
-                </h3>
+                    <div class="jumbotron text-center">
+                <h1 class="text-center display-4" >Train Express Scheduler</h1>
+                
                     </div>
                         <div class="row">
-                        <div class="col-sm-9">
+                        <div class="col-md-12">
                             <!-- Panel-Primary needed to get white text in Bootstrap -->
-                            <div class="panel panel-primary">
-                                <div class="panel-heading">All trains Scheduled Arrival
-                                    <div class="panel-body">
-                                        <div class="panel-body">
-                                            <table class="table table-hover table-responsive" id="timeTable">
+                            <div class="card-header">
+                                     Train Schedule Today
+                                </div>
+                                <br> 
+                                <table class="table table-hover table-responsive table table-striped text-center" id='timeTable'>
                                                 <thead>
                                                     <tr>
-                                                    <th>Train</th>
-                                                    <th>Destination</th>
-                                                    <th>Frequency</th>
-                                                    <th>Next Arrival</th>
-                                                    <th>Arrives In (min)</th>
-                                      </tr>
-                                    </thead>
-                                        <!-- Input data will be written to the trainTable below -->
-                                         <tbody id="trainTable">
-                                        <tr></tr>
-                                    </tbody>
-                                </table>
-                         </div>
-                      </div>
-                    </div>
-                  </div>
-                
-            
-                                
-                  
-                     <!--  Begin Sidebar -->
-                    <div class="col-sm-3">
-                            <!-- Panel-Primary needed to get white text in Bootstrap -->
-                            <div class="panel panel-primary">
-                            <div class="panel-heading">Add a New Train</div>
-                            <div class="panel-body">
+                                                    <th scope="col">Train</th>
+                                                    <th scope="col">Destination</th>
+                                                    <th scope="col">Frequency</th>
+                                                    <th scope="col">Next Arrival</th>
+                                                    <th scope="col">Arrives In (min)</th>
+                                                    </tr>
+                                                </thead>
+                                                 <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                     </div>
+                                 </div>
+                             
+                     <!--  Begin Your Train Schedule HERE -->
+                     <div class="container">
+                     <div class="row">
+                     <div class="col-md-12">
                                 <!-- Form -->
-                                <form role="form" class='form-horizontal'>
-                    
+                                <form>
                                 <div class="form-group">
-                                    <label for="train">Train </label>
-                                    <input type="text" class="form-control" id="enterTrain" placeholder="Train from London">
-                                </div>
-                    
+                                    <label for="trainName">Train </label>
+                                    <input type="text" class="form-control" id="enterTrain" placeholder="Orient Express">
+                                    </div>
                                 <div class="form-group">
-                                        <label class="firstTrain" for="firstTrain">First Train Time</label>
-                                        <label class="militaryTime">&nbsp;(HH:mm | Military Time)</label>
-                                        <input type="" class="form-control" id="enterTime" placeholder="24:59">
-                                      </div>
-                                      <div class="form-group">
-                                            <label for="minutesAway">Frequency - (mins) </label>
+                                        <label for="destination">Destination </label>
+                                        <input type="text" class="form-control" id="enterDest" placeholder="London">
+                                         </div>
+                                <div class="form-group">
+                                        <label for="firstTrain">First Train Time (HH:mm | Military Time) </label>
+                                        <input type="text" class="form-control" id="firstTrain01" placeholder="24:59">
+                                        </div>
+                                <div class="form-group">
+                                            <label for="frequency">Frequency - (mins) </label>
                                             <input type="text" class="form-control" id="enterFrequency" placeholder="120">
-                                          </div>
+                                            </div>
                             
-                                      <button type="submit" class="btn btn-default" id="submit">Add Train</button>
-                                      <button type="submit" class="btn btn-default" id="remove">Remove Train</button>
+                                      <button type="submit" class="btn btn-primary" id="submit">Add Train</button>
                                       <hr>
-                       
-                     </div>
-                  </div>
-                 </div>
-              
-                </div>
-            </div>
-              
-        </div>
-           
-            
-\            <!-- Own JavaScript -->
+                                </form>
+                                        </div>
+                                    </div>
+                                </div>
+                           
+             <!-- jQuery Link-->
+             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+             <!-- Own JavaScript -->
             <script type="javascript/text" src="./assets/javascript/app.js"></script>
 </body>
 </html>

@@ -1,4 +1,3 @@
-$(document).ready(function () {
 
   // Initialize Firebase
     var config = {
@@ -13,47 +12,83 @@ $(document).ready(function () {
 
 //Variables
 var database = firebase.database();
-// var freq = parseInt(freq);
-//Current time | writes to Jumbotron
-//Current Time
-var currentTime = moment();
-// console.log("Local Time: " + moment().format('HH:mm'));
-console.log("Local time: " + moment().format("HH:mm"));
+// Add new train when add train button is clicked
+$("#submit").on("click", function(event) {
+  event.preventDefault();
 
-//Writes Current Time to Jumbotron
-$('#currentTime').text(currentTime);
-//Button click capture
-$("#submit").on("click", function () {
+
     //Assign values to the Id"s in the HTML
-   var train = $('#enterTrain').val().trim();
-   var dest = $('#enterDest').val().trim();
-   var firstTrain = $('#enterTime').val().trim();
-   var frequency = $('#enterFrequency').val().trim();
-    //Parse frequency "string" into an integer
+   var trainName = $("#enterTrain").val().trim();
+   var destination = $("#enterDest").val().trim();
+   var firstTrain = $("#firstTrain").val().trim();
+   var frequency = $("#enterFrequency").val().trim();
+   
    //Push new train data to Firebase
    database.ref().push({
-});
-       train: train,
-       dest: dest,
+       train: trainName,
+       destination: destination,
        firstTrain: firstTrain,
        frequency: frequency,
-       timeAdded: firebase.database.ServerValue.TIMESTAMP
    });
-}); 
-database.ref().on("child_added", function (childSnapshot) {}
-var train = childSnapshot.val().train;
-var dest = childSnapshot.val().dest;
+
+   //clear data boxes
+   $("#enterTrain").val("");
+   $("#enterDest").val("");
+   $("#firstTrain").val("");
+   $("#enterFrequency").val("");
+   
+  });
+
+database.ref().on("child_added", function (childSnapshot) {
+var trainName = childSnapshot.val().train;
+var destination = childSnapshot.val().destination;
 var firstTrain = childSnapshot.val().firstTrain;
-var frequency = childSnapshot.val().frequency
+var frequency = childSnapshot.val().frequency;
 
-console.log("Train: " + train);
-console.log("Destination: " + dest);
-console.log("Next Train: " + firstTrain);
-console.log("Frequency: " + frequency);
 
-var frequency = parseInt(frequency);
+var firstTime = firstTrain;
+var tFrequency = frequency;
+
+// Next Train Trip 
+var nextTrainTrip = moment(nextTrain).format("hh:mm A")
+
+// convert the first time
+var firstTimeConverted = moment(firstTime, "HH:mm");
+//console.log(firstTimeConverted)
+
+// Current Time
 var currentTime = moment();
-console.log("Current Time: " + moment().format( 'HH:mm'));
+//console.log("Current Time is: " + moment(currentTime).format("HH:mm"));
+
+// Difference between the times
+var diffTime = moment().diff(firstTimeConverted, "minutes");
+//console.log("DIFFERENCE IN TIME: " + diffTime);
+
+// Time apart (remainder)
+var tRemainder = diffTime % tFrequency;
+//console.log("Time apart: " + tRemainder);
+
+// Minute Until Train
+var tMinutesTillTrain = tFrequency - tRemainder;
+//console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
+
+// Next Train
+var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+//console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
+
+// create the new row to DOM
+var newRow = $("<tr>").append( 
+$("<td>").text(train),
+$("<td>").text(destination),
+$("<td>").text(frequency),
+$("<td>").text(nextTrainTrip),
+$("<td>").text(tMinutesTillTrain),
+);
+
+// Add the newRow to the table
+$("#timeTable > tbody").append(newRow);
+});
+
 
 
 //pseudocode:
