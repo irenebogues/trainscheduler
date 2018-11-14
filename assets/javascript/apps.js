@@ -1,29 +1,32 @@
 
+   
+
   // Initialize Firebase
-    var config = {
-    apiKey: "AIzaSyAuGsGYpV8lYMY0Dbc8RxvVX4xw6dxOfN8",
-    authDomain: "train-scheduler-71f25.firebaseapp.com",
-    databaseURL: "https://train-scheduler-71f25.firebaseio.com",
-    projectId: "train-scheduler-71f25",
-    storageBucket: "train-scheduler-71f25.appspot.com",
-    messagingSenderId: "563548609509"
+  var config = {
+    apiKey: "AIzaSyAfY2e3cEDY1rVGAxfKmHuAfZPJ1CQSTJE",
+    authDomain: "train-scheduler-38a56.firebaseapp.com",
+    databaseURL: "https://train-scheduler-38a56.firebaseio.com",
+    projectId: "train-scheduler-38a56",
+    storageBucket: "train-scheduler-38a56.appspot.com",
+    messagingSenderId: "19004887377"
   };
   firebase.initializeApp(config);
 
 //Variables
 var database = firebase.database();
 // Add new train when add train button is clicked
-$("#submit").on("click", function(event) {
-  event.preventDefault();
+// $("#submit").on("click", function(event) {
 
+  $("form").submit(function(event) {
+    event.preventDefault();
 
     //Assign values to the Id"s in the HTML
    var trainName = $("#enterTrain").val().trim();
    var destination = $("#enterDest").val().trim();
    var firstTrain = $("#firstTrain").val().trim();
    var frequency = $("#enterFrequency").val().trim();
-   
-   //Push new train data to Firebase
+   console.log(trainName);
+  // Push new train data to Firebase
    database.ref().push({
        train: trainName,
        destination: destination,
@@ -78,7 +81,7 @@ var nextTrain = moment().add(tMinutesTillTrain, "minutes");
 
 // create the new row to DOM
 var newRow = $("<tr>").append( 
-$("<td>").text(train),
+$("<td>").text(trainName),
 $("<td>").text(destination),
 $("<td>").text(frequency),
 $("<td>").text(nextTrainTrip),
