@@ -19,5 +19,5 @@ To implement Firebase in order to persist data.
 * Firebase
 * moment.js
 
-## Authors
-**Irene Bogues** - *Author*
+## Author
+**Irene Bogues** 
